@@ -1,11 +1,8 @@
 # OData Challenge
 
-OData servislerinde birden fazla resource kullanımını amaçlayan örnek uygulama. Senaryoda Kategoriler, Ürünler ve Siparişlerin tutulduğu ilkel bir senaryo söz konusu. Bu senaryoda amaç aşağıdaki gibi sorguların OData hizmeti olarak REST tabanlı bir servis üzerinden sunulabileceğini göstermektir.
+OData servislerinde birden fazla resource kullanımını amaçlayan örnek uygulama. Senaryoda Kategoriler, Ürünler ve Siparişlerin tutulduğu ilkel bir senaryo söz konusu. Bu senaryoda amaç aşağıdaki gibi bir sorgunun OData hizmeti olarak REST tabanlı bir servis üzerinden sunulabileceğini göstermektir.
 
-- Elektronik kategorisindeki ürünlerin listelenmesi /Products?$filter=Category eq 'Elektronik'
-- 1001 numaralı ürüne ait kategori bilgisinin çekilmesi /Products(1001)/Category
-- 1 Numaralı kategoriye bağlı ürünler /Categories(1)/Products
-- ...
+- Kategoriler altındaki ürünler ve bu ürünler için verilen siparişlerin listelenmesinin sağlanması. Yani şuna bir benzer querystring yollamak istiyoruz -> *category?$expand=Products($select=Name,ListPrice,InStock;$expand=Orders($select=CustomerID,OrderDate,Quantity))*
 
 ## Ön Hazırlıklar
 
