@@ -19,3 +19,13 @@ dotnet tool install -g dotnet-ef
 dotnet ef migrations add Initial --startup-project ../SouthWind.Service
 dotnet ef database update --startup-project ..//SouthWind.Service
 ```
+
+## Çalışma Zamanı
+
+Öncelikle SQL docker container'ının çalışır olduğundan emin olmak lazım. Sonrasında en azından veri çekebilmek için Migration planlarının işletildiğinden. Bu işlemlerde bir sıkıntı yoksa SouthWind.Service isimli .Net uygulamasının çalıştırılması yeterlidir.
+
+```bash
+dotnet run
+```
+
+*Local ortamdaki çalışma zamanı sonuçları eklenecek*
