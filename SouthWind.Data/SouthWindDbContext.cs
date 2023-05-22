@@ -28,9 +28,9 @@ public class SouthWindDbContext
         modelBuilder.Entity<Order>().HasKey(o => o.Id);
 
         modelBuilder.Entity<Category>().HasData(
-                       new Category { Id = 1, Name = "Elektronik" },
-                       new Category { Id = 2, Name = "Kitap" },
-                       new Category { Id = 3, Name = "Müzik DVD" }
+                       new Category { Id = 1, Name = "Elektronik", Description = "Elektronik kategorisindeki ürünler." },
+                       new Category { Id = 2, Name = "Kitap", Description = "Kitap kategorisindeki ürünler." },
+                       new Category { Id = 3, Name = "Müzik DVD", Description = "Müzik DVD kategorisindeki ürünler.Fs" }
             );
 
         modelBuilder.Entity<Product>().HasData(
@@ -49,6 +49,22 @@ public class SouthWindDbContext
                        CategoryId = 1,
                        InStock = true,
                        ListPrice = 11000.50M
+                   },
+                   new Product
+                   {
+                       Id = 3,
+                       Name = "WD HDD 2.5 Tb",
+                       CategoryId = 1,
+                       InStock = false,
+                       ListPrice = 345.99M
+                   },
+                   new Product
+                   {
+                       Id = 4,
+                       Name = "Programming OData Services",
+                       CategoryId = 2,
+                       InStock = true,
+                       ListPrice = 54.50M
                    }
         );
 
@@ -62,6 +78,18 @@ public class SouthWindDbContext
             new Order { Id = 4, CustomerId = 6, Quantity = 15, ProductId = 2, OrderDate = DateTime.Now.AddDays(-10) },
             new Order { Id = 5, CustomerId = 7, Quantity = 30, ProductId = 2, OrderDate = DateTime.Now.AddDays(-20) },
             new Order { Id = 6, CustomerId = 8, Quantity = 5, ProductId = 2, OrderDate = DateTime.Now.AddDays(-60) }
+        );
+
+        modelBuilder.Entity<Order>().HasData(
+            new Order { Id = 7, CustomerId = 9, Quantity = 40, ProductId = 3, OrderDate = DateTime.Now.AddDays(-90) }
+        );
+
+        modelBuilder.Entity<Order>().HasData(
+            new Order { Id = 8, CustomerId = 190, Quantity = 12, ProductId = 4, OrderDate = DateTime.Now.AddDays(-7) },
+            new Order { Id = 9, CustomerId = 191, Quantity = 6, ProductId = 4, OrderDate = DateTime.Now.AddDays(-6) },
+            new Order { Id = 10, CustomerId = 192, Quantity = 8, ProductId = 4, OrderDate = DateTime.Now.AddDays(-6) },
+            new Order { Id = 11, CustomerId = 193, Quantity = 22, ProductId = 4, OrderDate = DateTime.Now.AddDays(-3) },
+            new Order { Id = 12, CustomerId = 194, Quantity = 35, ProductId = 4, OrderDate = DateTime.Now.AddDays(-7) }
         );
     }
 }
