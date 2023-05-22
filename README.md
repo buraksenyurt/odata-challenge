@@ -19,6 +19,6 @@ sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=tig@r76!" -p 1434:1433 --name
 dotnet tool install -g dotnet-ef
 
 # Bu komutları MusicLibrary.Data klasörü içerisindeyken çalıştırabiliriz.
-dotnet ef migrations add Intial --startup-project ../SouthWind.Service
+dotnet ef migrations add Initial --startup-project ../SouthWind.Service
 dotnet ef database update --startup-project ..//SouthWind.Service
 ```
