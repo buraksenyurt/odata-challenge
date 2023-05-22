@@ -15,7 +15,10 @@ Bu örnekte SQL Server veritabanı kullanılmakta. Onu bir docker imaj olarak ku
 # SQL docker örneğini başlatmak için (Şifreyi siz istediğiniz gibi verebilir veya aynısını kullanabilirsiniz)
 sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=tig@r76!" -p 1434:1433 --name sql-south --hostname sql-south -d mcr.microsoft.com/mssql/server:2022-latest
 
+# Migration için EF tool'a ihtiyacımız olacaktır
+dotnet tool install -g dotnet-ef
+
 # Bu komutları MusicLibrary.Data klasörü içerisindeyken çalıştırabiliriz.
-dotnet ef migrations add Intial --startup-project ../MusicLibrary.Service.Rest
-dotnet ef database update --startup-project ..//MusicLibrary.Service.Rest
+dotnet ef migrations add Intial --startup-project ../SouthWind.Service
+dotnet ef database update --startup-project ..//SouthWind.Service
 ```
