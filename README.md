@@ -28,4 +28,17 @@ dotnet ef database update --startup-project ..//SouthWind.Service
 dotnet run
 ```
 
-*Local ortamdaki çalışma zamanı sonuçları eklenecek*
+![assets\runtime_01.png](assets/runtime_01.png)
+
+Bu sorgunun çalışması sırasında EF tarafında da aşağıdaki SQL sorgusu çalıştırılacaktır.
+
+```sql
+SELECT [c].[Id], [c].[Description], [c].[Name], [t].[Id], [t].[CustomerId], [t].[OrderDate], [t].[Quantity], [t].[Id0], [t].[Name], [t].[ListPrice], [t].[InStock]
+      FROM [Categories] AS [c]
+      LEFT JOIN (
+          SELECT [p].[Id], [o].[CustomerId], [o].[OrderDate], [o].[Quantity], [o].[Id] AS [Id0], [p].[Name], [p].[ListPrice], [p].[InStock], [p].[CategoryId]
+          FROM [Products] AS [p]
+          LEFT JOIN [Orders] AS [o] ON [p].[Id] = [o].[ProductId]
+      ) AS [t] ON [c].[Id] = [t].[CategoryId]
+      ORDER BY [c].[Id], [t].[Id]
+```
